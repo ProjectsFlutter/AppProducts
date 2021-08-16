@@ -9,11 +9,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Form validation',
-      initialRoute: 'home',
+      initialRoute: 'login',
       routes: {
        'home' : (_) => HomeScreen(),
        'login': (_) => LoginScreen()
       },
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: Colors.grey[300]
+      ),
     );
   }
 }

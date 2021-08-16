@@ -1,0 +1,1 @@
+export 'package:app_form_validation/widgets/auth-widget.dart';
