@@ -27,7 +27,7 @@ class CardContainer extends StatelessWidget {
           color: Colors.black12,
           blurRadius: 15.0,
           offset: Offset(0,5)
-        )
+        ),
       ]
     );
   }
