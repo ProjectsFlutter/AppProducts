@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:app_form_validation/ui/inputDecorations-ui.dart';
 import 'package:app_form_validation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,8 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 50.0),
-              Text('Crear una nueva cuenta', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold))
+              Text('Crear una nueva cuenta', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
+              SizedBox(height: 50.0),
           ],
          ),
         )
@@ -42,25 +44,33 @@ class _LoginForm extends StatelessWidget {
             TextFormField(
               autocorrect:  false,
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.deepPurple
-                  )
-                ),
-               focusedBorder: UnderlineInputBorder(
-                 borderSide: BorderSide(
-                   color: Colors.deepPurple,
-                   width: 2
-                 )
-               ),
-               hintText: 'alonso.jorgeluis@gmail.com',
-               labelText: 'Correo electrónico',
-               labelStyle: TextStyle(
-                 color: Colors.grey
-               ),
-               prefixIcon: Icon(Icons.alternate_email_sharp,color: Colors.deepPurple),
+              decoration: InputDecorations.authInputDecoration(
+                hint_text: 'alonso.jorgeluis@gmail.com',
+                label_text: 'Correo electrónico',
+                prefix_icon:  Icons.alternate_email_rounded
+              )
+            ),
+            SizedBox(height: 10.0),
+            TextFormField(
+              autocorrect:  false,
+              obscureText: true,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecorations.authInputDecoration(
+                hint_text: '******************',
+                label_text: 'Contraseña',
+                prefix_icon: Icons.lock_outline                
+              )
+            ),
+            MaterialButton(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+              disabledColor: Colors.grey,
+              elevation: 0,
+              color: Colors.purple,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+                child: Text('Ingresar', style: TextStyle(color: Colors.white)),
               ),
+              onPressed: (){},
             )
           ],
         )
