@@ -1,8 +1,9 @@
 import 'dart:ui';
-
+import 'package:app_form_validation/providers/login-provider.dart';
 import 'package:app_form_validation/ui/inputDecorations-ui.dart';
 import 'package:app_form_validation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -12,18 +13,21 @@ class LoginScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 250.0),
+              SizedBox(height: 200.0),
               CardContainer(
                 child: Column(
                   children: [
                     SizedBox( height: 10.0),
                     Text('Login', style: Theme.of(context).textTheme.headline4),
                     SizedBox(height: 30.0),
-                    _LoginForm()
+                    ChangeNotifierProvider(
+                      create: ( _ ) => LoginProvider(),
+                      child: _LoginForm()
+                    )
                   ],
                 ),
               ),
-              SizedBox(height: 50.0),
+              SizedBox(height: 20.0),
               Text('Crear una nueva cuenta', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
               SizedBox(height: 50.0),
           ],
@@ -35,10 +39,14 @@ class LoginScreen extends StatelessWidget {
 }
 
 class _LoginForm extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
+    final loginForm = Provider.of<LoginProvider>(context);
+    
     return Container(
       child: Form(
+        key: loginForm.formKey,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         child: Column(
           children: [
@@ -55,6 +63,7 @@ class _LoginForm extends StatelessWidget {
                 RegExp regExp = new RegExp(pattern);
                 return regExp.hasMatch(value ?? '') ? null : 'Formato de correo incorrecto';
               },
+              onChanged: (value) => loginForm.email = value,
             ),
             SizedBox(height: 10.0),
             TextFormField(
@@ -69,7 +78,9 @@ class _LoginForm extends StatelessWidget {
               validator: (value){
                 return (value != null && value.length >= 6) ? null : 'La contraseña debe de ser 6 caracteres';
               },
+              onChanged: (value) => loginForm.password = value,
             ),
+            SizedBox(height:10.0),
             MaterialButton(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
               disabledColor: Colors.grey,
@@ -79,7 +90,10 @@ class _LoginForm extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
                 child: Text('Ingresar', style: TextStyle(color: Colors.white)),
               ),
-              onPressed: (){},
+              onPressed: (){
+               if (!loginForm.isValidFrom()) return;
+               Navigator.pushReplacementNamed(context, 'home');
+              },
             )
           ],
         )
