@@ -1,4 +1,4 @@
-# app_form_validation
+# app_products
 
 A new Flutter project.
 

@@ -1,7 +1,7 @@
 import 'dart:ui';
-import 'package:app_form_validation/providers/login-provider.dart';
-import 'package:app_form_validation/ui/inputDecorations-ui.dart';
-import 'package:app_form_validation/widgets/widgets.dart';
+import 'package:app_products/providers/login-provider.dart';
+import 'package:app_products/ui/inputDecorations-ui.dart';
+import 'package:app_products/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

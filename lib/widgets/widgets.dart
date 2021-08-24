@@ -1,2 +1,2 @@
-export 'package:app_form_validation/widgets/auth-widget.dart';
-export 'package:app_form_validation/widgets/card-widget.dart';
+export 'package:app_products/widgets/auth-widget.dart';
+export 'package:app_products/widgets/card-widget.dart';

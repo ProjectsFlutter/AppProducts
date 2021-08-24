@@ -1,4 +1,4 @@
-package com.example.app_form_validation
+package com.example.app_products
 
 import io.flutter.embedding.android.FlutterActivity
 

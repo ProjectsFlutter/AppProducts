@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.app_form_validation">
+    package="com.example.app_products">
    <application
-        android:label="app_form_validation"
+        android:label="app_products"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
