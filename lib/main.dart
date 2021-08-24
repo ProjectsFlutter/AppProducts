@@ -15,8 +15,16 @@ class MyApp extends StatelessWidget {
        'login': (_) => LoginScreen()
       },
       theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Colors.grey[300]
-      ),
+        scaffoldBackgroundColor: Colors.grey[300],
+        appBarTheme: AppBarTheme(
+          elevation: 0,
+          color:  Colors.cyan
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          elevation: 0,
+          backgroundColor: Colors.cyan
+        )
+      )
     );
   }
 }
