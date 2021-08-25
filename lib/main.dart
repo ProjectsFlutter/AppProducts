@@ -11,8 +11,9 @@ class MyApp extends StatelessWidget {
       title: 'Form validation',
       initialRoute: 'home',
       routes: {
-       'home' : (_) => HomeScreen(),
-       'login': (_) => LoginScreen()
+       'home'     : (_) => HomeScreen(),
+       'login'    : (_) => LoginScreen(),
+       'product'  : (_) => ProductScreen()
       },
       theme: ThemeData.light().copyWith(
         scaffoldBackgroundColor: Colors.grey[300],
