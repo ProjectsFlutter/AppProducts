@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AuthWidget extends StatelessWidget {
   final Widget child;
 
-  const AuthWidget({Key key, @required this.child}) : super(key: key);
+  const AuthWidget({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
