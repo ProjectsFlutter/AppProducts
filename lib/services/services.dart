@@ -1,1 +1,1 @@
-export 'package:app_products/services/services.dart';
+export 'package:app_products/services/product_service.dart';

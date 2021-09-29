@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ProductImage extends StatelessWidget {
+  final String? productUrlImg;
+
+  const ProductImage({Key? key, this.productUrlImg}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +14,14 @@ class ProductImage extends StatelessWidget {
         height: 450,
         child: ClipRRect(
           borderRadius: BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0)),
-          child: FadeInImage(
+          child: this.productUrlImg == null
+          ? Image(
+            image: AssetImage('assets/no-image.png'),
+            fit: BoxFit.cover
+          )
+          : FadeInImage(
             placeholder: AssetImage('assets/jar-loading.gif'),
-            image: NetworkImage('https://pizzerialacosanostra.com/wp-content/uploads/2020/06/01-BOTE-COCACOLA.jpg'),
+            image: NetworkImage(this.productUrlImg!),
             fit: BoxFit.cover,
           ),
         ),

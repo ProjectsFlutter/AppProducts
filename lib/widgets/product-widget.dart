@@ -82,7 +82,7 @@ class _PriceTag extends StatelessWidget {
         fit: BoxFit.contain,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.0),
-          child: Text('Price \$$productPrice', style: TextStyle(color: Colors.white, fontSize: 20)),
+          child: Text('\$$productPrice', style: TextStyle(color: Colors.white, fontSize: 20)),
         )
       ),
       decoration: BoxDecoration(
