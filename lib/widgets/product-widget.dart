@@ -1,7 +1,12 @@
+import 'package:app_products/models/models.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
 
+  final Product product;
+
+  const ProductCard({Key? key, required this.product}) : super(key: key);
+   
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,10 +19,11 @@ class ProductCard extends StatelessWidget {
         child: Stack(
           alignment: Alignment.bottomLeft,
           children: [
-           _BackgroundImage(),
-           _ProductDetails(),
-           Positioned(top: 0, right: 0, child: _PriceTag()),
-           Positioned(top: 0, left: 0, child: _NotAvailable()),
+           _BackgroundImage(url: product.picture),
+           _ProductDetails(productId: product.id!, productName: product.name,),
+           Positioned(top: 0, right: 0, child: _PriceTag(productPrice: product.price,)),
+           if(!product.available)
+              Positioned(top: 0, left: 0, child: _NotAvailable()),
           ],
         ),
       ),
@@ -40,7 +46,6 @@ class ProductCard extends StatelessWidget {
 }
 
 class _NotAvailable extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -63,6 +68,9 @@ class _NotAvailable extends StatelessWidget {
 }
 
 class _PriceTag extends StatelessWidget {
+  final double productPrice;
+
+  const _PriceTag({required this.productPrice});
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +82,7 @@ class _PriceTag extends StatelessWidget {
         fit: BoxFit.contain,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.0),
-          child: Text('Price \$ 17.00', style: TextStyle(color: Colors.white, fontSize: 20)),
+          child: Text('Price \$$productPrice', style: TextStyle(color: Colors.white, fontSize: 20)),
         )
       ),
       decoration: BoxDecoration(
@@ -86,6 +94,11 @@ class _PriceTag extends StatelessWidget {
 }
 
 class _ProductDetails extends StatelessWidget {
+  final String productName;
+  final String productId;
+
+  const _ProductDetails({required this.productName, required this.productId});
+  
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -101,12 +114,12 @@ class _ProductDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Nombre producto',
+            Text(this.productName,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             ),
-            Text('ID producto',
+            Text(this.productId,
             style: TextStyle(fontSize: 16)
             ),
           ],
@@ -118,6 +131,10 @@ class _ProductDetails extends StatelessWidget {
 
 class _BackgroundImage extends StatelessWidget {
 
+  final String? url;
+
+  const _BackgroundImage({this.url});
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -127,7 +144,7 @@ class _BackgroundImage extends StatelessWidget {
         height: 400.0,
         child: FadeInImage(
           placeholder: AssetImage('assets/jar-loading.gif'), 
-          image: NetworkImage('https://pizzerialacosanostra.com/wp-content/uploads/2020/06/01-BOTE-COCACOLA.jpg'),
+          image: NetworkImage(this.url!),
           fit: BoxFit.cover
         ),
       ),
