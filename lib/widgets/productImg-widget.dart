@@ -12,21 +12,24 @@ class ProductImage extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: 450,
-        child: ClipRRect(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0)),
-          child: this.productUrlImg == null
-          ? Image(
-            image: AssetImage('assets/no-image.png'),
-            fit: BoxFit.cover
-          )
-          : FadeInImage(
-            placeholder: AssetImage('assets/jar-loading.gif'),
-            image: NetworkImage(this.productUrlImg!),
-            fit: BoxFit.cover,
+        child: Opacity(
+          opacity: 0.9,
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0)),
+            child: this.productUrlImg == null
+            ? Image(
+              image: AssetImage('assets/no-image.png'),
+              fit: BoxFit.cover
+            )
+            : FadeInImage(
+              placeholder: AssetImage('assets/jar-loading.gif'),
+              image: NetworkImage(this.productUrlImg!),
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         decoration: BoxDecoration(
-          color: Colors.red,
+          color: Colors.black,
           borderRadius: BorderRadius.only(topLeft: Radius.circular(45.0), topRight: Radius.circular(45.0)),
           boxShadow: [
             BoxShadow(
@@ -39,5 +42,4 @@ class ProductImage extends StatelessWidget {
       ),
     );
   }
-  
 }
