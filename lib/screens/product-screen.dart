@@ -16,7 +16,6 @@ class ProductScreen extends StatelessWidget {
        create: ( _ ) => ProductFormProvider(productService.selectedProduct),
        child: _ProductScreenBody(productService: productService),
      );
-    //  return _ProductScreenBody(productService: productService);
    }
  }
 
