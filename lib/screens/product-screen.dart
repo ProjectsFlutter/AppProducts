@@ -60,7 +60,7 @@ class _ProductScreenBody extends StatelessWidget {
                        );
 
                        if(_pickedFile == null) return ;
-                       print('Image ${_pickedFile.path}');
+                       productService.updateSelectedProductImage(_pickedFile.path);
 
                      },
                      icon: Icon(Icons.camera_alt_outlined, size:40, color: Colors.black),
