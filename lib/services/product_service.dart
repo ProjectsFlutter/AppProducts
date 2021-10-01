@@ -36,7 +36,7 @@ class ProductService extends ChangeNotifier{
   }
 
   Future saveOrCreateProduct( Product product )async{
-    isLoading = true;
+    isSalving = true;
     notifyListeners();
 
     if(product.id == null){
@@ -45,7 +45,7 @@ class ProductService extends ChangeNotifier{
       await this.updateProduct(product);
     }
 
-    isLoading = false;
+    isSalving = false;
     notifyListeners();
   }
 
