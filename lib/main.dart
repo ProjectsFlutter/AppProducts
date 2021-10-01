@@ -1,5 +1,5 @@
 import 'package:app_products/screens/screens.dart';
-import 'package:app_products/services/product_service.dart';
+import 'package:app_products/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
  
@@ -10,7 +10,8 @@ void main() => runApp(AppState());
    Widget build(BuildContext context) {
      return MultiProvider(
        providers:[
-         ChangeNotifierProvider(create: (_) => ProductService())
+         ChangeNotifierProvider(create: (_) => ProductService()),
+         ChangeNotifierProvider(create: (_) => AuthService())
        ],
        child: MyApp(),
      );
