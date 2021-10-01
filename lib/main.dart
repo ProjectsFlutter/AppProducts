@@ -22,11 +22,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Form validation',
-      initialRoute: 'home',
+      title: 'Products App',
+      initialRoute: 'login',
       routes: {
        'home'     : (_) => HomeScreen(),
        'login'    : (_) => LoginScreen(),
+       'register' : (_) => RegisterScreen(),
        'product'  : (_) => ProductScreen()
       },
       theme: ThemeData.light().copyWith(
